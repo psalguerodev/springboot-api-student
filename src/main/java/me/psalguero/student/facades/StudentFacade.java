@@ -25,7 +25,6 @@ public class StudentFacade extends AbstractFacade {
     private StudentService studentService;
 
     public ResponseEntity<StudentResponseBean> findStudentByName(String name) {
-
         logger.warn(String.format("BEGINNING FOR [findStudentByName] - Request %n%s", FormatUtil.fromObjectToJson(name)));
 
         StudentResponseBean studentResponseBean = new StudentResponseBean();
