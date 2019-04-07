@@ -10,12 +10,12 @@ import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
 @Configuration
 public class WebInterceptorConfig implements WebMvcConfigurer {
 
-    @Autowired
-    @Qualifier("requestTimeInterceptopr")
-    private RequestTimeInterceptor interceptor;
+  @Autowired
+  @Qualifier("requestTimeInterceptopr")
+  private RequestTimeInterceptor interceptor;
 
-    @Override
-    public void addInterceptors(InterceptorRegistry registry) {
-        registry.addInterceptor(interceptor);
-    }
+  @Override
+  public void addInterceptors(InterceptorRegistry registry) {
+    registry.addInterceptor(interceptor);
+  }
 }

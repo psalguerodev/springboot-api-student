@@ -12,45 +12,45 @@ import java.util.Optional;
 @Service("studentService")
 public class StudentServiceImpl implements StudentService {
 
-    @Autowired
-    private StudentRepository studentRepository;
+  @Autowired
+  private StudentRepository studentRepository;
 
-    @Override
-    public Student findByName(String name) {
-        Optional<Student> findByName = Optional
-                .ofNullable(studentRepository.findByFirstName(name));
+  @Override
+  public Student findByName(String name) {
+    Optional<Student> findByName = Optional
+        .ofNullable(studentRepository.findByFirstName(name));
 
-        if(findByName.isPresent()) {
-            return findByName.get();
-        }
-
-        return null;
+    if (findByName.isPresent()) {
+      return findByName.get();
     }
 
-    @Override
-    public void save(Student student) {
-        studentRepository.save(student);
+    return null;
+  }
+
+  @Override
+  public void save(Student student) {
+    studentRepository.save(student);
+  }
+
+  @Override
+  public Student delete(Integer id) {
+    Optional<Student> find = studentRepository.findById(id);
+
+    if (find.isPresent()) {
+      studentRepository.delete(find.get());
+      return find.get();
     }
 
-    @Override
-    public Student delete(Integer id) {
-        Optional<Student> find = studentRepository.findById(id);
+    return null;
+  }
 
-        if(find.isPresent()) {
-            studentRepository.delete(find.get());
-            return find.get();
-        }
+  @Override
+  public Student update(Student student) {
+    return studentRepository.save(student);
+  }
 
-        return null;
-    }
-
-    @Override
-    public Student update(Student student) {
-        return studentRepository.save(student);
-    }
-
-    @Override
-    public List<Student> findAll() {
-        return studentRepository.findAll();
-    }
+  @Override
+  public List<Student> findAll() {
+    return studentRepository.findAll();
+  }
 }

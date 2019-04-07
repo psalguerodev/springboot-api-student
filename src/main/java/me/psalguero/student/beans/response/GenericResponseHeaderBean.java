@@ -12,11 +12,11 @@ import lombok.Setter;
 @Getter
 @NoArgsConstructor
 @Setter
-public class GenericResponseHeaderBean extends  AbstractHeaderBean {
+public class GenericResponseHeaderBean extends AbstractHeaderBean {
 
-    private static final long serialVersionUID = -3055205685954574699L;
+  private static final long serialVersionUID = -3055205685954574699L;
 
-    @JsonProperty("result")
-    private ResultBean result;
+  @JsonProperty("result")
+  private ResultBean result;
 
 }

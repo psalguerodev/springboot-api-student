@@ -7,15 +7,15 @@ import org.springframework.web.bind.annotation.RestController;
 
 @RestController
 @RequestMapping(
-				value = ConstantsConfig.BASE_PATH + ConstantsConfig.PUBLIC_MAIN_PATH,
-				path = ConstantsConfig.BASE_PATH + ConstantsConfig.PUBLIC_MAIN_PATH
+    value = ConstantsConfig.BASE_PATH + ConstantsConfig.PUBLIC_MAIN_PATH,
+    path = ConstantsConfig.BASE_PATH + ConstantsConfig.PUBLIC_MAIN_PATH
 )
 public class PublicController {
 
-	@GetMapping
-	public String publicApi() {
-		return "Public Api";
-	}
+  @GetMapping
+  public String publicApi() {
+    return "Public Api";
+  }
 
 
 }

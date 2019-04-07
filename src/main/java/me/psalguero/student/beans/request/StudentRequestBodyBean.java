@@ -7,7 +7,7 @@ import com.fasterxml.jackson.annotation.JsonInclude;
 @JsonInclude(JsonInclude.Include.NON_NULL)
 public class StudentRequestBodyBean extends AbstractBodyBean {
 
-    private static final long serialVersionUID = 1987947709960799847L;
+  private static final long serialVersionUID = 1987947709960799847L;
 
-    // TODO pending for POST Method
+  // TODO pending for POST Method
 }

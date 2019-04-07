@@ -19,16 +19,16 @@ public class StudentApplication {
     Environment env = application.run(args).getEnvironment();
 
     LOG.warn(
-            "\n----------------------------------------------------------\n\t"
+        "\n----------------------------------------------------------\n\t"
             + "Application '{}' is running! Access URLs:\n\t"
             + "Local: \t\thttp://localhost:{}\n\t"
             + "External: \thttp://{}:{}\n\t"
             + "Profile(s): \t{}\n----------------------------------------------------------",
-            env.getProperty("application.name"),
-            env.getProperty("server.port"),
-            InetAddress.getLocalHost().getHostAddress(),
-            env.getProperty("server.port"),
-            env.getActiveProfiles()
+        env.getProperty("application.name"),
+        env.getProperty("server.port"),
+        InetAddress.getLocalHost().getHostAddress(),
+        env.getProperty("server.port"),
+        env.getActiveProfiles()
     );
 
   }

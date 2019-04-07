@@ -14,10 +14,10 @@ import me.psalguero.student.beans.AbstractMessageBean;
 @Setter
 public class StudentResponseBean extends AbstractMessageBean<GenericResponseHeaderBean, StudentResponseBodyBean> {
 
-    private static final long serialVersionUID = 4195026754723173908L;
+  private static final long serialVersionUID = 4195026754723173908L;
 
-    public StudentResponseBean(GenericResponseHeaderBean headerBean) {
-        super(headerBean);
-    }
+  public StudentResponseBean(GenericResponseHeaderBean headerBean) {
+    super(headerBean);
+  }
 
 }

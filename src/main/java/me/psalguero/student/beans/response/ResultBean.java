@@ -18,20 +18,20 @@ import java.io.Serializable;
 @NoArgsConstructor
 public class ResultBean implements Serializable {
 
-    private static final long serialVersionUID = -3627567838471590391L;
+  private static final long serialVersionUID = -3627567838471590391L;
 
-    @JsonProperty("code")
-    private String code;
+  @JsonProperty("code")
+  private String code;
 
-    @JsonProperty("message")
-    private String message;
+  @JsonProperty("message")
+  private String message;
 
-    @JsonProperty("detail")
-    private String detail;
+  @JsonProperty("detail")
+  private String detail;
 
-    @JsonProperty("traceId")
-    private String traceId;
+  @JsonProperty("traceId")
+  private String traceId;
 
-    @JsonProperty("dateTime")
-    private String dateTime;
+  @JsonProperty("dateTime")
+  private String dateTime;
 }

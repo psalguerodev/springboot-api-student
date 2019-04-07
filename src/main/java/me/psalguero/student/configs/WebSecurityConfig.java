@@ -27,78 +27,78 @@ import org.springframework.web.filter.CorsFilter;
 @EnableWebSecurity
 public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 
-    @Autowired
-    private ApplicationConfig applicationConfig;
+  @Autowired
+  private ApplicationConfig applicationConfig;
 
-    @Autowired
-    private CustomUserDetailsService customUserDetailsService;
+  @Autowired
+  private CustomUserDetailsService customUserDetailsService;
 
-    @Override
-    protected void configure(HttpSecurity http) throws Exception {
-        http.csrf().disable();
-        http
-                .authorizeRequests()
-                .antMatchers("**/api/**").authenticated()
-                .and()
-                .cors()
-                .and()
-                .httpBasic();
+  @Override
+  protected void configure(HttpSecurity http) throws Exception {
+    http.csrf().disable();
+    http
+        .authorizeRequests()
+        .antMatchers("**/api/**").authenticated()
+        .and()
+        .cors()
+        .and()
+        .httpBasic();
+  }
+
+  @Override
+  protected void configure(AuthenticationManagerBuilder auth) throws Exception {
+    PasswordEncoder passwordEncoder = new BCryptPasswordEncoder();
+    auth
+        .userDetailsService(customUserDetailsService)
+        .passwordEncoder(passwordEncoder);
+
+    auth
+        .inMemoryAuthentication()
+        .withUser("psalguero1")
+        .password(passwordEncoder.encode("psalguero1")).roles("USER")
+        .and()
+        .withUser("root")
+        .password(passwordEncoder.encode("root")).roles("ADMIN");
+  }
+
+  @Bean
+  public PasswordEncoder passwordEncoder() {
+    return new BCryptPasswordEncoder();
+  }
+
+  @Override
+  public void configure(WebSecurity web) throws Exception {
+    web
+        .ignoring()
+        .antMatchers(ConstantsConfig.BASE_PATH + ConstantsConfig.PUBLIC_MAIN_PATH)
+        .antMatchers(applicationConfig.getH2Path() + "/**");
+  }
+
+  @Bean("corsFilter")
+  public CorsFilter corsFilter(ApplicationContext context) {
+    CorsConfiguration corsConfiguration = new CorsConfiguration();
+    corsConfiguration.addAllowedOrigin("*");
+    corsConfiguration.addAllowedHeader("*");
+    corsConfiguration.addAllowedMethod(HttpMethod.DELETE);
+    corsConfiguration.addAllowedMethod(HttpMethod.GET);
+    corsConfiguration.addAllowedMethod(HttpMethod.POST);
+    corsConfiguration.addAllowedMethod(HttpMethod.OPTIONS);
+    corsConfiguration.addAllowedMethod(HttpMethod.PUT);
+    corsConfiguration.addAllowedMethod(HttpMethod.PATCH);
+
+    UrlBasedCorsConfigurationSource corsConfigurationSource = new UrlBasedCorsConfigurationSource();
+    corsConfigurationSource.registerCorsConfiguration("/oauth/**", corsConfiguration);
+    corsConfigurationSource.registerCorsConfiguration("/api/**", corsConfiguration);
+
+    return new MyCorsFilter(corsConfigurationSource);
+  }
+
+  @Order(Ordered.HIGHEST_PRECEDENCE)
+  public static class MyCorsFilter extends CorsFilter {
+    MyCorsFilter(CorsConfigurationSource configurationSource) {
+      super(configurationSource);
     }
-
-    @Override
-    protected void configure(AuthenticationManagerBuilder auth) throws Exception {
-        PasswordEncoder passwordEncoder = new BCryptPasswordEncoder();
-        auth
-                .userDetailsService(customUserDetailsService)
-                .passwordEncoder(passwordEncoder);
-
-        auth
-                .inMemoryAuthentication()
-                .withUser("psalguero1")
-                    .password(passwordEncoder.encode("psalguero1")).roles("USER")
-                .and()
-                .withUser("root")
-                    .password(passwordEncoder.encode("root")).roles("ADMIN");
-    }
-
-    @Bean
-    public PasswordEncoder passwordEncoder() {
-        return new BCryptPasswordEncoder();
-    }
-
-    @Override
-    public void configure(WebSecurity web) throws Exception {
-        web
-                .ignoring()
-                .antMatchers(ConstantsConfig.BASE_PATH + ConstantsConfig.PUBLIC_MAIN_PATH)
-                .antMatchers(applicationConfig.getH2Path() + "/**");
-    }
-
-    @Bean("corsFilter")
-    public CorsFilter corsFilter(ApplicationContext context) {
-        CorsConfiguration corsConfiguration = new CorsConfiguration();
-        corsConfiguration.addAllowedOrigin("*");
-        corsConfiguration.addAllowedHeader("*");
-        corsConfiguration.addAllowedMethod(HttpMethod.DELETE);
-        corsConfiguration.addAllowedMethod(HttpMethod.GET);
-        corsConfiguration.addAllowedMethod(HttpMethod.POST);
-        corsConfiguration.addAllowedMethod(HttpMethod.OPTIONS);
-        corsConfiguration.addAllowedMethod(HttpMethod.PUT);
-        corsConfiguration.addAllowedMethod(HttpMethod.PATCH);
-
-        UrlBasedCorsConfigurationSource corsConfigurationSource = new UrlBasedCorsConfigurationSource();
-        corsConfigurationSource.registerCorsConfiguration("/oauth/**", corsConfiguration);
-        corsConfigurationSource.registerCorsConfiguration("/api/**", corsConfiguration);
-
-        return new MyCorsFilter(corsConfigurationSource);
-    }
-
-    @Order(Ordered.HIGHEST_PRECEDENCE)
-    public static class MyCorsFilter extends CorsFilter {
-        MyCorsFilter(CorsConfigurationSource configurationSource) {
-            super(configurationSource);
-        }
-    }
+  }
 }
 
 

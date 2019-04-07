@@ -19,18 +19,18 @@ import java.io.Serializable;
 @AllArgsConstructor
 @NoArgsConstructor
 public abstract class AbstractMessageBean<H extends AbstractHeaderBean, B extends AbstractBodyBean>
-        implements Serializable {
+    implements Serializable {
 
-    private static final long serialVersionUID = -2838413102856993626L;
+  private static final long serialVersionUID = -2838413102856993626L;
 
-    @JsonProperty("header")
-    private H header;
+  @JsonProperty("header")
+  private H header;
 
-    @JsonProperty("body")
-    private B body;
+  @JsonProperty("body")
+  private B body;
 
-    public AbstractMessageBean(H header){
-        this.header = header;
-    }
+  public AbstractMessageBean(H header) {
+    this.header = header;
+  }
 
 }

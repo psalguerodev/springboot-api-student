@@ -15,10 +15,10 @@ import java.time.LocalDateTime;
 @AllArgsConstructor
 public class CustomExceptionBean {
 
-    private int code;
-    private String message;
-    private LocalDateTime timestamp;
-    private String path;
-    private String error;
+  private int code;
+  private String message;
+  private LocalDateTime timestamp;
+  private String path;
+  private String error;
 
 }

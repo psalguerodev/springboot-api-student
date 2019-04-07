@@ -18,33 +18,33 @@ import java.util.Set;
 @EqualsAndHashCode
 public class Student {
 
-    @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
-    @Column(name = "student_id")
-    private int studentId;
+  @Id
+  @GeneratedValue(strategy = GenerationType.AUTO)
+  @Column(name = "student_id")
+  private int studentId;
 
-    @Column(name = "gender")
-    private Gender gender;
+  @Column(name = "gender")
+  private Gender gender;
 
-    @Column(name = "firts_name")
-    @Size(max = 60)
-    private String firstName;
+  @Column(name = "firts_name")
+  @Size(max = 60)
+  private String firstName;
 
-    @Column(name = "middle_name")
-    @Size(max = 60)
-    private String middleName;
+  @Column(name = "middle_name")
+  @Size(max = 60)
+  private String middleName;
 
-    @Column(name = "last_name")
-    @Size(max = 60)
-    private String lastName;
+  @Column(name = "last_name")
+  @Size(max = 60)
+  private String lastName;
 
-    @Column(name = "other_student_detail")
-    @Size(max = 100)
-    private String otherStudentDetail;
+  @Column(name = "other_student_detail")
+  @Size(max = 100)
+  private String otherStudentDetail;
 
-    @OneToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
-    @JoinTable(name = "student_parent", joinColumns = @JoinColumn(name = "student_id"),
-                inverseJoinColumns = @JoinColumn(name = "parent_id"))
-    private Set<Parent> parent;
+  @OneToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
+  @JoinTable(name = "student_parent", joinColumns = @JoinColumn(name = "student_id"),
+      inverseJoinColumns = @JoinColumn(name = "parent_id"))
+  private Set<Parent> parent;
 
 }

@@ -14,16 +14,16 @@ import javax.persistence.*;
 @EqualsAndHashCode
 public class Family {
 
-    @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
-    @Column(name = "family_id")
-    private int familyId;
+  @Id
+  @GeneratedValue(strategy = GenerationType.AUTO)
+  @Column(name = "family_id")
+  private int familyId;
 
-    @Column(name = "family_name")
-    private String name;
+  @Column(name = "family_name")
+  private String name;
 
-    @OneToOne(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
-    @JoinColumn(name = "parent_id", nullable = false)
-    private Parent headParent;
+  @OneToOne(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
+  @JoinColumn(name = "parent_id", nullable = false)
+  private Parent headParent;
 
 }

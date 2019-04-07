@@ -9,5 +9,5 @@ import java.io.Serializable;
 @JsonInclude(JsonInclude.Include.NON_NULL)
 public abstract class AbstractHeaderBean implements Serializable {
 
-    private static final long serialVersionUID = 151981565933199023L;
+  private static final long serialVersionUID = 151981565933199023L;
 }

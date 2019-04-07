@@ -15,17 +15,16 @@ import java.time.LocalDateTime;
 @RestController
 public class ErrorHandlingController extends ResponseEntityExceptionHandler {
 
-    @ExceptionHandler({ GenericExceptionBase.class })
-    public ResponseEntity<Object> handleNotFound(Exception ex, HttpServletRequest request) {
-        CustomExceptionBean customExceptionBean = new CustomExceptionBean();
-        customExceptionBean.setTimestamp(LocalDateTime.now());
-        customExceptionBean.setCode(HttpStatus.NOT_FOUND.value());
-        customExceptionBean.setMessage(ex.getMessage());
-        customExceptionBean.setError(ex.getClass().getCanonicalName());
-        customExceptionBean.setPath(request.getServletPath());
-        return new ResponseEntity<>(customExceptionBean, HttpStatus.NOT_FOUND);
-    }
-
+  @ExceptionHandler({GenericExceptionBase.class})
+  public ResponseEntity<Object> handleNotFound(Exception ex, HttpServletRequest request) {
+    CustomExceptionBean customExceptionBean = new CustomExceptionBean();
+    customExceptionBean.setTimestamp(LocalDateTime.now());
+    customExceptionBean.setCode(HttpStatus.NOT_FOUND.value());
+    customExceptionBean.setMessage(ex.getMessage());
+    customExceptionBean.setError(ex.getClass().getCanonicalName());
+    customExceptionBean.setPath(request.getServletPath());
+    return new ResponseEntity<>(customExceptionBean, HttpStatus.NOT_FOUND);
+  }
 
 
 }

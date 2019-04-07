@@ -6,7 +6,7 @@ import org.springframework.data.jpa.repository.JpaRepository;
 
 public interface StudentRepository extends JpaRepository<Student, Integer> {
 
-    Student findByFirstName(String name);
+  Student findByFirstName(String name);
 
-    Student findByGender(Gender gender);
+  Student findByGender(Gender gender);
 }

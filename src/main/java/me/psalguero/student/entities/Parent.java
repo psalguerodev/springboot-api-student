@@ -16,28 +16,28 @@ import javax.validation.constraints.Size;
 @EqualsAndHashCode
 public class Parent {
 
-    @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
-    @Column(name = "parent_id")
-    private int parentId;
+  @Id
+  @GeneratedValue(strategy = GenerationType.AUTO)
+  @Column(name = "parent_id")
+  private int parentId;
 
-    @Column(name = "gender", nullable = false)
-    private Gender gender;
+  @Column(name = "gender", nullable = false)
+  private Gender gender;
 
-    @Column(name = "first_name", nullable = false)
-    @Size(max = 60)
-    private String firstName;
+  @Column(name = "first_name", nullable = false)
+  @Size(max = 60)
+  private String firstName;
 
-    @Column(name = "middle_name")
-    @Size(max = 60)
-    private String middleName;
+  @Column(name = "middle_name")
+  @Size(max = 60)
+  private String middleName;
 
-    @Column(name = "last_name")
-    @Size(max = 60)
-    private String lastName;
+  @Column(name = "last_name")
+  @Size(max = 60)
+  private String lastName;
 
-    @Column(name = "other_parent_detail")
-    @Size(max = 100)
-    private String otherParentDetail;
+  @Column(name = "other_parent_detail")
+  @Size(max = 100)
+  private String otherParentDetail;
 
 }

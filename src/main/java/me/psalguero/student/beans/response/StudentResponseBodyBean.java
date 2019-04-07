@@ -14,8 +14,8 @@ import me.psalguero.student.entities.Student;
 @Setter
 public class StudentResponseBodyBean extends AbstractBodyBean {
 
-    private static final long serialVersionUID = 4195026754723173908L;
+  private static final long serialVersionUID = 4195026754723173908L;
 
-    @JsonProperty("student")
-    private Student student;
+  @JsonProperty("student")
+  private Student student;
 }

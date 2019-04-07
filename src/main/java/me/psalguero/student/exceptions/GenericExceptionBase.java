@@ -7,10 +7,10 @@ import lombok.Setter;
 @Setter
 public class GenericExceptionBase extends RuntimeException {
 
-    private String code;
+  private String code;
 
-    public GenericExceptionBase(String code, String message) {
-        super(message);
-        this.code = code;
-    }
+  public GenericExceptionBase(String code, String message) {
+    super(message);
+    this.code = code;
+  }
 }

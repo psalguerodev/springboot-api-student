@@ -13,17 +13,17 @@ import org.springframework.web.bind.annotation.RestController;
 
 @RestController
 @RequestMapping(
-				value = ConstantsConfig.BASE_PATH + ConstantsConfig.STUDENT_MAIN_PATH,
-				path = ConstantsConfig.BASE_PATH + ConstantsConfig.STUDENT_MAIN_PATH
+    value = ConstantsConfig.BASE_PATH + ConstantsConfig.STUDENT_MAIN_PATH,
+    path = ConstantsConfig.BASE_PATH + ConstantsConfig.STUDENT_MAIN_PATH
 )
 public class StudentController {
 
-	@Autowired
-	private StudentFacade studentFacade;
+  @Autowired
+  private StudentFacade studentFacade;
 
-	@GetMapping("/{name}")
-	public ResponseEntity<StudentResponseBean> getStudent(@PathVariable String name) throws GenericException {
-		return studentFacade.findStudentByName(name);
-	}
+  @GetMapping("/{name}")
+  public ResponseEntity<StudentResponseBean> getStudent(@PathVariable String name) throws GenericException {
+    return studentFacade.findStudentByName(name);
+  }
 
 }

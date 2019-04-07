@@ -10,10 +10,10 @@ import org.springframework.stereotype.Component;
 @Getter
 public class ApplicationConfig {
 
-	@Value("${application.name}")
-	private String applicationName;
+  @Value("${application.name}")
+  private String applicationName;
 
-	@Value("${spring.h2.console.path}")
-	private String h2Path;
+  @Value("${spring.h2.console.path}")
+  private String h2Path;
 
 }

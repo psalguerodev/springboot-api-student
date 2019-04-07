@@ -16,19 +16,19 @@ import javax.persistence.*;
 @Setter
 public class FamilyMembers {
 
-    @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
-    @Column(name = "family_members_id", nullable = false)
-    private int familyMembersId;
+  @Id
+  @GeneratedValue(strategy = GenerationType.AUTO)
+  @Column(name = "family_members_id", nullable = false)
+  private int familyMembersId;
 
-    @Column(name = "parent_or_student_member", nullable = false)
-    private ParentOrStudent parentOrStudent;
+  @Column(name = "parent_or_student_member", nullable = false)
+  private ParentOrStudent parentOrStudent;
 
-    @OneToOne(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
-    @JoinColumn(name = "parent_id", nullable = false)
-    private Parent parent;
+  @OneToOne(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
+  @JoinColumn(name = "parent_id", nullable = false)
+  private Parent parent;
 
-    @OneToOne(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
-    @JoinColumn(name = "student_id", nullable = false)
-    private Student student;
+  @OneToOne(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
+  @JoinColumn(name = "student_id", nullable = false)
+  private Student student;
 }
