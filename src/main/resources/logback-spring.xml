@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<configuration>
+    <include resource="org/springframework/boot/logging/logback/base.xml" />
+
+    <logger name="org.springframework" level="ERROR"/>
+
+
+    <!-- APENDERS -->
+    <appender name="APPENDER" class="ch.qos.logback.core.rolling.RollingFileAppender">
+        <encoder>
+            <pattern>${FILE_LOG_PATTERN}</pattern>
+            <charset>utf8</charset>
+        </encoder>
+        <!--<rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
+            <fileNamePattern>api-student-%d{yyyyMMdd-HH}.log</fileNamePattern>
+            <maxHistory>720</maxHistory>
+        </rollingPolicy>-->
+    </appender>
+
+
+    <!-- PROFILES -->
+    <springProfile name="local">
+        <root level="INFO">
+            <appender-ref ref="FILE"/>
+            <appender-ref ref="CONSOLE" />
+        </root>
+    </springProfile>
+
+</configuration>
