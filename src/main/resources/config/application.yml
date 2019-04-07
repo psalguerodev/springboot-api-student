@@ -9,8 +9,10 @@ server:
 spring:
   jpa:
     database-platform: org.hibernate.dialect.H2Dialect
+    hibernate:
+      ddl-auto: create-drop
   datasource:
-    url: jdbc:h2:mem:studentDB
+    url: jdbc:h2:file:~/studentDB
     driver-class-name: org.h2.Driver
     data-username: root
     data-password: root

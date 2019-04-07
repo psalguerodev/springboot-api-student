@@ -4,9 +4,9 @@ import me.psalguero.student.entities.Parent;
 import me.psalguero.student.entities.Role;
 import me.psalguero.student.entities.Student;
 import me.psalguero.student.entities.User;
-import me.psalguero.student.repositories.RoleRepository;
 import me.psalguero.student.repositories.StudentRepository;
 import me.psalguero.student.repositories.UserRepository;
+import me.psalguero.student.services.StudentService;
 import me.psalguero.student.types.Gender;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -27,7 +27,7 @@ public class DBUserInit implements CommandLineRunner {
     private UserRepository userRepository;
 
     @Autowired
-    private StudentRepository studentRepository;
+    private StudentService studentService;
 
     @Autowired
     private PasswordEncoder passwordEncoder;
@@ -60,8 +60,6 @@ public class DBUserInit implements CommandLineRunner {
         student.setGender(Gender.MASCULINE);
         student.setParent(new HashSet<>(Arrays.asList(parent)));
 
-        student = studentRepository.save(student);
-
-        logger.info(student.toString());
+        studentService.save(student);
     }
 }

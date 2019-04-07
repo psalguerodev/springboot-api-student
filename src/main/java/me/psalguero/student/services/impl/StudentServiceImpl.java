@@ -18,7 +18,7 @@ public class StudentServiceImpl implements StudentService {
     @Override
     public Student findByName(String name) {
         Optional<Student> findByName = Optional
-                .of(studentRepository.findByFirstName(name));
+                .ofNullable(studentRepository.findByFirstName(name));
 
         if(findByName.isPresent()) {
             return findByName.get();
