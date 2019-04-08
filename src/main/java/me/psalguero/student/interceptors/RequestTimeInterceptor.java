@@ -25,7 +25,6 @@ public class RequestTimeInterceptor extends HandlerInterceptorAdapter {
                               Object handler, Exception ex) throws Exception {
     long starTime = (long) request.getAttribute("startTime");
     long timeRequest = System.currentTimeMillis() - starTime;
-    logger.warn("Request Url {} >> Request Time {} ms.", request.getServletPath(), timeRequest);
-    super.afterCompletion(request, response, handler, ex);
+    logger.warn(String.format("Request Url %n%s >> Request Time %n%s ms.", request.getServletPath(), timeRequest));
   }
 }

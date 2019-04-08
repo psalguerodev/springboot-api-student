@@ -1,1 +1,15 @@
 <?xml version="1.0" encoding="UTF-8" ?>
+<FindBugsFilter>
+    <Match>
+        <Class name="me.psalguero.student.configs.*"/>
+        <Bug pattern="REC_CATCH_EXCEPTION, RV_RETURN_VALUE_IGNORED_BAD_PRACTICE"/>
+    </Match>
+    <Match>
+        <Class name="me.psalguero.student.interceptors.RequestTimeInterceptor" />
+        <Bug pattern="CRLF_INJECTION_LOGS"/>
+    </Match>
+    <Match>
+        <Class name="me.psalguero.student.beans.response.StudentResponseBodyBean" />
+        <Bug pattern="SE_BAD_FIELD" />
+    </Match>
+</FindBugsFilter>

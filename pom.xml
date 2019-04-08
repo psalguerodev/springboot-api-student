@@ -86,13 +86,14 @@
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-checkstyle-plugin</artifactId>
-                <version>2.17</version>
+                <version>3.0.0</version>
                 <executions>
                     <execution>
                         <id>checkstyle</id>
                         <phase>validate</phase>
                         <goals>
-                            <goal>check</goal>
+                            <goal>checkstyle</goal>
+                            <goal>checkstyle-aggregate</goal>
                         </goals>
                     </execution>
                 </executions>
@@ -126,6 +127,7 @@
                         <exclude>me.psalguero.student.beans.*</exclude>
                         <exclude>me.psalguero.student.configs.*</exclude>
                         <exclude>me.psalguero.student.exceptions.*</exclude>
+                        <exclude>me.psalguero.student.interceptors.*</exclude>
                     </excludes>
                     <rules>
                         <rule>
